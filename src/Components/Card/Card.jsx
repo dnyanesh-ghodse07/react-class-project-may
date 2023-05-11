@@ -9,11 +9,18 @@ const Card = (props) => {
         category,
         price,
         color,
-        ratings
+        ratings,
+        image
     } = props.product;
   return (
-    <div>
-        <h1>{name}</h1>
+    <div className='card'>
+        <div className="img">
+          <img src={image} alt="" />
+        </div>
+        <div className="detail">
+          <h3 className='title'>{name}</h3>
+          <p className='model'>{model}</p>
+        </div>
     </div>
   )
 }
