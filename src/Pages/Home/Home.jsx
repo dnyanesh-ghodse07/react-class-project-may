@@ -2,8 +2,10 @@ import React from 'react'
 import './Home.scss'
 import Card from '../../Components/Card/Card'
 import { Link } from 'react-router-dom'
-import { products } from '../../data'
+import data from '../../data.json';
 const Home = () => {
+
+    console.log(data);
     
   return (
     <>
@@ -12,7 +14,7 @@ const Home = () => {
     </div>
     <div className="products">
         {
-            products.map((product) => {
+            data.products.map((product) => {
                 return (
                     <Link to={`/productDetail/${product.id}`}>
                         <Card key={product.id} product={product}/>

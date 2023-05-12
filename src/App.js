@@ -1,19 +1,29 @@
 import './App.scss';
-import Home from './Pages/Home/Home';
+import React, { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Cart from './Pages/Cart/Cart';
-import Navbar from './Components/Navbar/Navbar';
-import ProductDetails from './Pages/ProductDetails/ProductDetails';
+
+const Navbar = React.lazy(() => import('./Components/Navbar/Navbar'));
+const ProductDetails = React.lazy(() => import('./Pages/ProductDetails/ProductDetails'));
+const Cart = React.lazy(() => import('./Pages/Cart/Cart'));
+const Home = React.lazy(() => import('./Pages/Home/Home'));
 
 function App() {
 
   return (
     <div className="App">
-    <Navbar/>
+      <Navbar />
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='cart' element={<Cart />} />
-        <Route path='productDetail/:id' element={<ProductDetails />} />
+        <Route path='/' element={
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <Home />
+          </Suspense>
+        } />
+        <Route path='cart' element={<Suspense fallback={<h1>Loading...</h1>}>
+          <Cart />
+        </Suspense>} />
+        <Route path='productDetail/:id' element={<Suspense fallback={<h1>Loading...</h1>}>
+          <ProductDetails />
+        </Suspense>} />
       </Routes>
     </div>
   );

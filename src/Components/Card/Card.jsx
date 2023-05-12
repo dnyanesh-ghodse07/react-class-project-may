@@ -4,22 +4,24 @@ import "./Card.scss"
 const Card = (props) => {
     const {
         id,
-        name,
-        model,
+        title,
+        brand,
         category,
         price,
-        color,
-        ratings,
-        image
+        rating,
+        images,
+        thumbnail
     } = props.product;
   return (
     <div className='card'>
         <div className="img">
-          <img src={image} alt="" />
+          <img src={thumbnail} alt="" />
         </div>
         <div className="detail">
-          <h3 className='title'>{name}</h3>
-          <p className='model'>{model}</p>
+          <h3 className='brand'>{brand.length > 20 ? brand.substring(0,20)+'...' : brand}</h3>
+          <span className='title'> {title.length > 20 ? title.substring(0,20)+'...' : title}</span>
+          <p className='price'>$ {price}</p>
+          {/* <span className='rating'>*{rating}</span> */}
         </div>
     </div>
   )

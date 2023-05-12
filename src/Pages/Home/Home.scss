@@ -1,5 +1,8 @@
 .products{
     margin: 50px;
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 15px;
+    flex-wrap: wrap;
 }
