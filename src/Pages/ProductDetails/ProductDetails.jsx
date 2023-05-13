@@ -1,13 +1,15 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import "./ProductDetails.scss"
 import { useParams } from 'react-router-dom'
 import data from '../../data.json'
+import {ShopContext} from '../../context/shopContext';
 
 const ProductDetails = () => {
+  const {addToCart,removeFromCart,cartItems} = useContext(ShopContext);
   const {id} = useParams();
   const product = data.products.filter(p => p.id == id);
   const {images,brand,price,title,category,discountPercentage,description} = product[0];
-  console.log(product);
+  console.log(cartItems);
   return (
     <div className='product-details-container'>
 
@@ -27,7 +29,7 @@ const ProductDetails = () => {
                 <p>Discount: {discountPercentage} %</p>
             </div>
           </div>
-          <button>Add to cart</button>
+          <button onClick={() => addToCart(id)}>Add to cart</button>
         </div>
       </div>
       
