@@ -6,3 +6,15 @@
     gap: 15px;
     flex-wrap: wrap;
 }
+
+.search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0;
+    .search-items{
+        padding: 10px;
+        width: 40%;
+        outline: none;
+    }
+}
