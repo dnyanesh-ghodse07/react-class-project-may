@@ -19,6 +19,8 @@ const Cart = () => {
         <h1>Your Cart</h1>
       </div>
       <div className="cart-main">
+        { cartProducts.length ? (
+        <>
         <div className="cart-products">
           {
             cartProducts.map(product => {
@@ -70,6 +72,8 @@ const Cart = () => {
           </div>
 
         </div>
+        </>
+): <h1 style={{color: 'lightgray'}}>Your cart is empty</h1>}
       </div>
     </div>
   )

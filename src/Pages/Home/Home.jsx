@@ -14,10 +14,33 @@ const Home = () => {
         setProducts(filteredData)
     },[inputText])
 
+    const categories = new Set(data.products.map((product) => product.category));
+    const uniqueCategories = [...categories]
+    console.log(uniqueCategories);
+
+
+    const [selectedCategories,setSelectedCategories] = useState('');
+    console.log(selectedCategories);
+
+    useEffect(() => {
+        if(selectedCategories){
+            const filterCategory = data.products.filter((product) => product.category === selectedCategories);
+            setProducts(filterCategory);
+        }
+
+    },[selectedCategories])
+
   return (
     <>
     <div className='search'>
         <input type="text" className='search-items' placeholder='Search items' onChange={(e) => setInputText(e.target.value)}/>
+        <select className='category-select' name="" id="" onChange={(e) => setSelectedCategories(e.target.value)}>
+            {
+                uniqueCategories.map((category) => {
+                    return <option value={category}>{category}</option>
+                })
+            }
+        </select>
     </div>
     <div className="products">
         {
