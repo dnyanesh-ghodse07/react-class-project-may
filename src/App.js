@@ -7,6 +7,7 @@ const Navbar = React.lazy(() => import('./Components/Navbar/Navbar'));
 const ProductDetails = React.lazy(() => import('./Pages/ProductDetails/ProductDetails'));
 const Cart = React.lazy(() => import('./Pages/Cart/Cart'));
 const Home = React.lazy(() => import('./Pages/Home/Home'));
+const Login = React.lazy(() => import('./Pages/Login/Login'));
 
 function App() {
 
@@ -25,6 +26,9 @@ function App() {
           </Suspense>} />
           <Route path='productDetail/:id' element={<Suspense fallback={<h1>Loading...</h1>}>
             <ProductDetails />
+          </Suspense>} />
+          <Route path='login' element={<Suspense fallback={<h1>Loading...</h1>}>
+            <Login />
           </Suspense>} />
         </Routes>
       </ShopContextProvider>

@@ -1,0 +1,28 @@
+.login_container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .login{
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        background-color: lightblue;
+        input{
+            padding: 10px;
+            margin: 3px;
+        }
+
+        .login-btn button{
+            padding: 10px 20px;
+            background-color: cadetblue;
+            border: none;
+            &:hover{
+                background-color: green;
+                cursor: pointer;
+            }
+        }
+    }
+}

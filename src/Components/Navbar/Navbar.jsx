@@ -1,15 +1,27 @@
 import React from 'react'
 import './Navbar.scss'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import {ShopContext} from '../../context/shopContext';
 
 
 const Navbar = () => {
 
+    const navigate = useNavigate();
+    const {auth} = useContext(ShopContext);
+
     const {cartItems} = useContext(ShopContext);
     const totalItems = Object.values(cartItems).reduce((acc,cur) => acc + cur,0);
     console.log(totalItems);
+
+
+    const navigateToCart = () => {
+        if(auth){
+            navigate('/cart');
+        }else{
+            navigate('/login')
+        }
+    }
  return (
     <div className='navbar'>
         <div className="brand">
@@ -21,7 +33,7 @@ const Navbar = () => {
                     <Link href="">About</Link>
                 </li>
                 <li>
-                    <Link to='/cart'>Cart <span className='cart-item-no'>{totalItems}</span></Link>
+                    <button onClick={navigateToCart}>Cart <span className='cart-item-no'>{totalItems}</span></button>
                 </li>
             </ul>
         </div>

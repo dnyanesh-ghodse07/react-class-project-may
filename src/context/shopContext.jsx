@@ -12,6 +12,14 @@ const ShopContextProvider = ({children}) => {
         return cart;
     }
 
+    const [auth,setAuth] = useState(false);
+
+    function isAuthenticated (username,password) {
+        if(username === 'admin' && password === '1234') {
+            setAuth(true);
+        }
+    }
+
     const [cartItems, setCartItems] = useState(getDefaultCart());
 
     const addToCart = (itemId) => {
@@ -28,7 +36,7 @@ const ShopContextProvider = ({children}) => {
     }
 
     return (
-        <ShopContext.Provider value={{addToCart,removeFromCart,cartItems}}>
+        <ShopContext.Provider value={{addToCart,removeFromCart,cartItems,auth,setAuth,isAuthenticated}}>
             {children}
         </ShopContext.Provider>
     )
